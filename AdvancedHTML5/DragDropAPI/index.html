@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script>
+        function drag(ev) {
+            ev.dataTransfer.setdata("text", ev.target.id);
+        }
+        
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+        
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        
+    </div>
+    
+    <img id="drag1" src="Mushroom%20-%201UP.ico" draggable="true" ondragstart="drag(event)">
+    
+
+</body>
+</html>
+
