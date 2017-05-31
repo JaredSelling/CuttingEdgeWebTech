@@ -3,7 +3,7 @@
 <head>
     <script>
         function drag(ev) {
-            ev.dataTransfer.setdata("text", ev.target.id);
+            ev.dataTransfer.setData("text", ev.target.id);
         }
         
         function allowDrop(ev) {
@@ -21,8 +21,10 @@
 </head>
 <body>
 
-    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-        
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">   
+    </div>
+    
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
     </div>
     
     <img id="drag1" src="Mushroom%20-%201UP.ico" draggable="true" ondragstart="drag(event)">
