@@ -1,0 +1,26 @@
+#addInput {
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+    font-size: 15px;
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul, li {
+    margin: 0 auto;
+    padding: 0;
+}
+
+ul {
+    width: 65%;
+}
+
+li {
+    margin: 0 auto;
+    text-align: center;
+}
+
