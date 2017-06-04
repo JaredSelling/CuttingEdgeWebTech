@@ -9,16 +9,20 @@
         <script src="script.js"></script>
         
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
+
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     
     <body>
         <div id="main" ng-app="mainApp" ng-controller="appCtrl">
             <h1>To Do:</h1>
-            <ul class="list-group">
-                <li ng-repeat="task in tasks" class="list-group-item"><h3>{{task}}</h3></li>
-            </ul>
+            
+            <div id="tasksToShow">
+                <ul class="list-group">
+                    <li ng-repeat="oneTask in tasks" class="list-group-item"><div class="checkbox"><input type="checkbox" ng-model="oneTask.status"><span contenteditable="false" ng-keydown="saveEdit(oneTask.taskMessage)" ng-dblclick="contentEdit()"ng-model="oneTask.taskMessage" class="done-{{oneTask.status}}">{{oneTask.taskMessage}}</span></div></li>
+                 </ul>
+            </div>
+            
             <input ng-model="task" type="text" id="addInput" ng-keyup="searchEnter()">
             
             
