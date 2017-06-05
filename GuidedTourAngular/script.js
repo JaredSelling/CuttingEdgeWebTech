@@ -5,6 +5,7 @@ appX.controller('appCtrl', function($scope) {
     
     $scope.tasks = [];
     
+    
     var taskData = localStorage['tasksList'];
     
     if(taskData !== undefined) {
@@ -21,6 +22,8 @@ appX.controller('appCtrl', function($scope) {
         $scope.tasks.push({'taskMessage':$scope.task, 'status': false});
         console.log($scope.tasks);
         $scope.task = '';
+        localStorage['tasksList'] = JSON.stringify($scope.tasks);
+        console.log(localStorage);
     };
     
     $scope.contentEdit = function() {

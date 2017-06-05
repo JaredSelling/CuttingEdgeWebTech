@@ -19,7 +19,7 @@
             
             <div id="tasksToShow">
                 <ul class="list-group">
-                    <li ng-repeat="oneTask in tasks" class="list-group-item"><div class="checkbox"><input type="checkbox" ng-model="oneTask.status"><span contenteditable="false" ng-keydown="saveEdit(oneTask.taskMessage)" ng-dblclick="contentEdit()"ng-model="oneTask.taskMessage" class="done-{{oneTask.status}}">{{oneTask.taskMessage}}</span></div></li>
+                    <li ng-repeat="oneTask in tasks track by $index" class="list-group-item"><div class="checkbox"><input type="checkbox" ng-model="oneTask.status"><span contenteditable="false" ng-keydown="saveEdit(oneTask.taskMessage)" ng-dblclick="contentEdit(oneTask.taskMessage)"ng-model="oneTask.taskMessage" class="done-{{oneTask.status}}">{{oneTask.taskMessage}}</span></div></li>
                  </ul>
             </div>
             
