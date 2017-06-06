@@ -9,8 +9,13 @@
     </head>
     
     <body>
-        <div ng-app="myApp">
+        <div ng-app="myApp" ng-controller="todoCtrl">
             
+            <h2>To Do:</h2>
+            
+            <ul>
+                <li ng-repeat="item in todos">{{item.text}}</li>
+            </ul>
         </div>
     </body>
 </html>
