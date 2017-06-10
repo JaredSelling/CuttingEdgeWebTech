@@ -1,0 +1,33 @@
+.addInput {
+    display: block;
+    margin: 0 auto;
+    padding: 5px; 
+}
+
+h2 {
+    text-align: center;
+}
+
+ul {
+    width: 65%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+li {
+    text-align: center;
+}
+
+span[contenteditable="true"] {
+    background: #bababa;
+    padding: 3px;
+}
+
+i {
+    float: right;
+    cursor:default;
+}
+
+a:click {
+    
+}
