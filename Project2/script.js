@@ -38,16 +38,12 @@ mainApp.controller('favoritesCtrl', function($scope) {
 
     };
     
-    /*$(document).bind('click', function() {
-        var isClickedElementChildOfForm = element.find(event.target).length>0;
-        
-        if(isClickedElementChildOfForm)
-            return;
-        
-        $scope.apply(function() {
+    $(document).bind('click', function() {    
+        $scope.$apply(function() {
             $scope.editIsVisible = false;
+            console.log($scope.editIsVisible);
         });
-    });*/
+    });
     
     $scope.startEdit = function(item) {
         
@@ -62,26 +58,27 @@ mainApp.controller('favoritesCtrl', function($scope) {
         }
     };
     
+    $scope.stopEdit = function(item) {
+        $scope.editIsVisible = false; 
+    };
+    
     $scope.saveChanges = function(item) {
-       /* if(event.which==13 && $scope.editURL !=='' && $scope.editDescription !== '') {
-            for(i = 0; i<$scope.itemList.length;i++) {
-                if($scope.itemList[i] )
-            }
-            localStorage['itemList'] = JSON.stringify($scope.itemList);
-        } */
         
-        if(event.which==13 && $scope.editURL !== '' && $scope.editDescription !== '') {
+      /*  if(event.which==13 && $scope.editURL !== '' && $scope.editDescription !== '') { */
             for(i = 0; i<$scope.itemList.length; i++) {
                 if($scope.itemList[i] == item) {
                     $scope.itemList[i].url = event.target.parentNode.childNodes[1].value;
                     $scope.itemList[i].description = event.target.parentNode.childNodes[5].value;
-                    $scope.toggleEdit();
-                    console.log($scope.editIsVisible);
+                    
+                    $scope.editIsVisible = false;
+                   
                     localStorage['itemList'] = JSON.stringify($scope.itemList);
+                    
+                    console.log("Saved changes");
                     
                 }
             }
-        }
+       // }
     };
     
     $scope.deleteItem = function(item) {
@@ -92,4 +89,17 @@ mainApp.controller('favoritesCtrl', function($scope) {
     };
     
     
+});
+
+mainApp.directive('ngEnter',function () {
+    return function (scope, element, attrs) {
+        element.bind('keydown keypress', function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+                event.preventDefault();
+            }
+        });
+    };
 });
