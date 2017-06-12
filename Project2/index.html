@@ -25,9 +25,9 @@
 
             
             <ul class="list-group">
-                <li class="list-group-item dropdown" ng-repeat="item in itemList track by $index"ng-model="selected" ng-mouseenter="selected=false" ng-mouseleave="selected=true" ng-model="item"><span contenteditable="false" ng-keydown="saveChanges(item)" > <a id="itemText{{$index}}" href="{{item}}">{{item.description}}</a></span><i class="material-icons dropdown-toggle" data-toggle="dropdown" ng-hide="selected" ng-click="toggleEdit(item)">create</i><i ng-hide="selected" ng-click="deleteItem(item)" class="material-icons">delete_forever</i>
+                <li class="list-group-item dropdown" ng-repeat="item in itemList track by $index"ng-model="selected" ng-mouseenter="selected=false" ng-mouseleave="selected=true" ng-model="item"><span contenteditable="false" ng-keydown="saveChanges(item)" > <a id="itemText{{$index}}" href="{{item.url}}">{{item.description}}</a></span><i class="material-icons dropdown-toggle" data-toggle="dropdown" ng-hide="selected" ng-click="startEdit(item)">create</i><i ng-hide="selected" ng-click="deleteItem(item)" class="material-icons">delete_forever</i>
                     
-                    <ul class="dropdown-menu">
+
                         <!--<li>
                         <input type="text" class="form-group" ng-model="editURL">
                         </li>
@@ -36,18 +36,17 @@
                         <input type="text" class="form-group"ng-model="editDescription">
                         </li>-->
                         
-                        <form>
+                        <form class="dropdown-menu" ng-show="editIsVisible" ng-blur="toggleEdit()" id="editForm">
                             <div class="form-group">
-                                <input type="text" class="form-group" ng-model="editURL">
+                                <input type="text" class="form-group" ng-model="editURL" ng-keyup="saveChanges(item)">
                                 
                                 <br>
                                 
-                                <input type="text" class="form-group" ng-model="editDescription">
+                                <input type="text" class="form-group" ng-model="editDescription" ng-keyup="saveChanges(item)">
                             </div>
                         </form>
 
 
-                    </ul>
                 </li>
             </ul>
         
