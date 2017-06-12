@@ -36,13 +36,13 @@
                         <input type="text" class="form-group"ng-model="editDescription">
                         </li>-->
                         
-                        <form class="dropdown-menu" ng-show="editIsVisible" id="editForm" ng-enter="saveChanges(item)">
+                        <form class="dropdown-menu" ng-show="editIsVisible" id="editForm" ng-keyup="formSubmission(item)">
                             <div class="form-group">
-                                <input type="text" class="form-group" ng-model="editURL" required>
+                                <input type="text" class="form-group" ng-model="editURL">
                                 
                                 <br>
                                 
-                                <input type="text" class="form-group" ng-model="editDescription" required>
+                                <input type="text" class="form-group" ng-model="editDescription">
                             </div>
                         </form>
 
@@ -74,6 +74,8 @@
     <li><a href="#">JavaScript</a></li>
   </ul>
 </div> -->
+        
+        <p id="dummy" ng-model="dummy"></p>
         
 
     </body>

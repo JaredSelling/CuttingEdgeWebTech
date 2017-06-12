@@ -38,12 +38,15 @@ mainApp.controller('favoritesCtrl', function($scope) {
 
     };
     
-    $(document).bind('click', function() {    
+    $(document).bind('click', function() { 
+        
         $scope.$apply(function() {
             $scope.editIsVisible = false;
             console.log($scope.editIsVisible);
         });
-    });
+    }); 
+    
+    
     
     $scope.startEdit = function(item) {
         
@@ -62,24 +65,35 @@ mainApp.controller('favoritesCtrl', function($scope) {
         $scope.editIsVisible = false; 
     };
     
+    $scope.formSubmission = function(item) {
+        if(event.which == 13 && $scope.editURL !== '' && $scope.editDescription !== '') {
+            $scope.toggleEdit();
+            $scope.saveChanges(item);
+        
+            console.log(document.activeElement);
+        }  
+    };
+    
+
+    
     $scope.saveChanges = function(item) {
         
-      /*  if(event.which==13 && $scope.editURL !== '' && $scope.editDescription !== '') { */
+       /* if(event.which==13 && $scope.editURL !== '' && $scope.editDescription !== '') { */
             for(i = 0; i<$scope.itemList.length; i++) {
                 if($scope.itemList[i] == item) {
                     $scope.itemList[i].url = event.target.parentNode.childNodes[1].value;
                     $scope.itemList[i].description = event.target.parentNode.childNodes[5].value;
-                    
-                    $scope.editIsVisible = false;
                    
                     localStorage['itemList'] = JSON.stringify($scope.itemList);
                     
-                    console.log("Saved changes");
+                    console.log($scope.editIsVisible);
                     
                 }
             }
        // }
     };
+    
+
     
     $scope.deleteItem = function(item) {
         var index = $scope.itemList.indexOf(item);
@@ -88,10 +102,13 @@ mainApp.controller('favoritesCtrl', function($scope) {
         localStorage['itemList'] = JSON.stringify($scope.itemList);
     };
     
+    document.addEventListener('focusin', function(e) { console.log(document.activeElement + " focused")});
+    
+    document.addEventListener('focusout', function(e) {console.log(document.activeElement + " losing focus")});
     
 });
 
-mainApp.directive('ngEnter',function () {
+/*mainApp.directive('ngEnter',function () {
     return function (scope, element, attrs) {
         element.bind('keydown keypress', function (event) {
             if(event.which === 13) {
@@ -102,4 +119,5 @@ mainApp.directive('ngEnter',function () {
             }
         });
     };
-});
+}); */
+
