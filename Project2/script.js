@@ -2,9 +2,6 @@ var mainApp = angular.module('mainApp', []);
 
 mainApp.controller('favoritesCtrl', function($scope) {
     
-    console.log($scope.editIsVisible);
-
-    
     $scope.selected = true;
     
     $scope.itemList = [];
@@ -21,6 +18,12 @@ mainApp.controller('favoritesCtrl', function($scope) {
         }
     };
     
+    $scope.clickAdd = function() {
+        if($scope.newItem !== undefined && $scope.description !== undefined) {
+            $scope.addItem();
+        }
+    }
+    
     $scope.addItem = function() {
         $scope.itemList.push({url:$scope.newItem, description: $scope.description});
         console.log($scope.itemList);
@@ -32,9 +35,6 @@ mainApp.controller('favoritesCtrl', function($scope) {
     $scope.toggleEdit = function() {
         
         $scope.editIsVisible = !$scope.editIsVisible;
-        
-        
-        console.log($scope.editIsVisible);
 
     };
     
@@ -50,7 +50,11 @@ mainApp.controller('favoritesCtrl', function($scope) {
     
     $scope.startEdit = function(item) {
         
+        console.log("edit start");
+        
         $scope.toggleEdit();
+        
+        console.log($scope.editIsVisible);
         
         for(i = 0; i<$scope.itemList.length; i++) {
             if($scope.itemList[i] == item) {
@@ -65,12 +69,19 @@ mainApp.controller('favoritesCtrl', function($scope) {
         $scope.editIsVisible = false; 
     };
     
-    $scope.formSubmission = function(item) {
+    $scope.enterSubmit = function(item) {
         if(event.which == 13 && $scope.editURL !== '' && $scope.editDescription !== '') {
             $scope.toggleEdit();
             $scope.saveChanges(item);
         
-            console.log(document.activeElement);
+        }
+    };
+    
+    $scope.clickSubmit = function(item) {
+        console.log("submit clicked");
+        if($scope.editURL !== '' && $scope.editDescription !== '') {
+            $scope.toggleEdit();
+            $scope.saveChanges(item);
         }
     };
     
@@ -81,12 +92,11 @@ mainApp.controller('favoritesCtrl', function($scope) {
        /* if(event.which==13 && $scope.editURL !== '' && $scope.editDescription !== '') { */
             for(i = 0; i<$scope.itemList.length; i++) {
                 if($scope.itemList[i] == item) {
-                    $scope.itemList[i].url = event.target.parentNode.childNodes[1].value;
-                    $scope.itemList[i].description = event.target.parentNode.childNodes[5].value;
+                   $scope.itemList[i].url = event.target.parentNode.childNodes[3].value;
+                    $scope.itemList[i].description = event.target.parentNode.childNodes[9].value;
                    
                     localStorage['itemList'] = JSON.stringify($scope.itemList);
                     
-                    console.log($scope.editIsVisible);
                     
                 }
             }

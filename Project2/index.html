@@ -20,12 +20,11 @@
     
     <body ng-app="mainApp" ng-controller="favoritesCtrl">
         <h2>My favorites:</h2>
-        <input ng-keyup="searchEnter()"type="text" class="addInput" ng-model="newItem" placeholder="Enter full URL here" required>
-        <input type="text" class="addInput" placeholder="Enter a description here "ng-model="description" ng-keyup="searchEnter()" required>
+
 
             
             <ul class="list-group">
-                <li class="list-group-item dropdown" ng-repeat="item in itemList track by $index"ng-model="selected" ng-mouseenter="selected=false" ng-mouseleave="selected=true" ng-model="item"><span contenteditable="false" ng-keydown="saveChanges(item)" > <a id="itemText{{$index}}" href="{{item.url}}">{{item.description}}</a></span><i class="material-icons dropdown-toggle" data-toggle="dropdown" ng-hide="selected" ng-click="startEdit(item)">create</i><i ng-hide="selected" ng-click="deleteItem(item)" class="material-icons">delete_forever</i>
+                <li class="list-group-item dropdown" ng-repeat="item in itemList track by $index"ng-model="selected" ng-mouseenter="selected=false" ng-mouseleave="selected=true" ng-model="item"><span contenteditable="false" ng-keydown="saveChanges(item)" class="list-text"><a id="itemText{{$index}}" href="{{item.url}}" class="listText" target="_blank">{{item.description}}</a></span><i class="material-icons dropdown-toggle edit-icon" data-toggle="dropdown" ng-hide="selected" ng-click="startEdit(item)">create</i><i ng-hide="selected" ng-click="deleteItem(item)" class="material-icons delete-icon">delete_forever</i>
                     
 
                         <!--<li>
@@ -36,7 +35,7 @@
                         <input type="text" class="form-group"ng-model="editDescription">
                         </li>-->
                         
-                        <form class="dropdown-menu" ng-show="editIsVisible" id="editForm" ng-keyup="formSubmission(item)">
+                        <form class="dropdown-menu" ng-show="editIsVisible" id="editForm" ng-keyup="enterSubmit(item)">
                             <div class="form-group">
                                 Url: <br>
                                 <input type="text" class="form-group editInput" ng-model="editURL">
@@ -48,13 +47,29 @@
                                 
                                 <br>
                                 
-                                <button type="button" class="btn btn-success" ng-click="formSubmission(item)">Save</button>
+                                <div class="buttonWrapper">
+                                    <button type="button" class="btn btn-success" ng-click="clickSubmit(item)">Save</button>
+                                </div>
                             </div>
                         </form>
 
 
                 </li>
             </ul>
+        
+        <div class="formWrapper">
+            <input ng-keyup="searchEnter()"type="text" class="addInput" ng-model="newItem" placeholder="Enter full URL here" required>
+
+            <br>
+
+            <input type="text" class="addInput" placeholder="Enter a description here "ng-model="description" ng-keyup="searchEnter()" required>
+
+            <br>
+
+            <div class="buttonWrapper">
+                <button type="button" class="btn btn-success" ng-click = "clickAdd()"><i class="glyphicon glyphicon-plus"></i>Add</button>
+            </div>
+        </div>
         
         <!--<div class="dropdown">
                  <ul class="dropdown-menu">
