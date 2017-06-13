@@ -27,3 +27,15 @@ i {
     float: right;
     cursor:default;
 }
+
+.form-group {
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+#editForm {
+    text-align: left;
+}
+

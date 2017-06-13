@@ -71,7 +71,7 @@ mainApp.controller('favoritesCtrl', function($scope) {
             $scope.saveChanges(item);
         
             console.log(document.activeElement);
-        }  
+        }
     };
     
 

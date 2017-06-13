@@ -38,11 +38,17 @@
                         
                         <form class="dropdown-menu" ng-show="editIsVisible" id="editForm" ng-keyup="formSubmission(item)">
                             <div class="form-group">
-                                <input type="text" class="form-group" ng-model="editURL">
+                                Url: <br>
+                                <input type="text" class="form-group editInput" ng-model="editURL">
                                 
                                 <br>
                                 
-                                <input type="text" class="form-group" ng-model="editDescription">
+                                Description: <br>
+                                <input type="text" class="form-group editInput" ng-model="editDescription">
+                                
+                                <br>
+                                
+                                <button type="button" class="btn btn-success" ng-click="formSubmission(item)">Save</button>
                             </div>
                         </form>
 
