@@ -72,7 +72,7 @@ mainApp.controller('favoritesCtrl', function($scope) {
     $scope.enterSubmit = function(item) {
         if(event.which == 13 && $scope.editURL !== '' && $scope.editDescription !== '') {
             $scope.toggleEdit();
-            $scope.saveChanges(item);
+            $scope.enterSaveChanges(item);
         
         }
     };
@@ -81,26 +81,33 @@ mainApp.controller('favoritesCtrl', function($scope) {
         console.log("submit clicked");
         if($scope.editURL !== '' && $scope.editDescription !== '') {
             $scope.toggleEdit();
-            $scope.saveChanges(item);
+            $scope.clickSaveChanges(item);
         }
     };
     
 
     
-    $scope.saveChanges = function(item) {
-        
-       /* if(event.which==13 && $scope.editURL !== '' && $scope.editDescription !== '') { */
+    $scope.clickSaveChanges = function(item) {
             for(i = 0; i<$scope.itemList.length; i++) {
                 if($scope.itemList[i] == item) {
-                   $scope.itemList[i].url = event.target.parentNode.childNodes[3].value;
-                    $scope.itemList[i].description = event.target.parentNode.childNodes[9].value;
+                   $scope.itemList[i].url = event.target.parentNode.parentNode.childNodes[3].value;
+                    $scope.itemList[i].description = event.target.parentNode.parentNode.childNodes[9].value;
                    
                     localStorage['itemList'] = JSON.stringify($scope.itemList);
-                    
-                    
                 }
             }
-       // }
+    };
+    
+    $scope.enterSaveChanges = function(item) {
+        for(i=0; i<$scope.itemList.length; i++) {
+            if($scope.itemList[i] == item) {
+                $scope.itemList[i].url = event.target.parentNode.childNodes[3].value;
+                $scope.itemList[i].description = event.target.parentNode.childNodes[9].value;
+
+                localStorage['itemList'] = JSON.stringify($scope.itemList);              
+            }
+
+        }
     };
     
 
