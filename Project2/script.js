@@ -8,9 +8,19 @@ mainApp.controller('favoritesCtrl', function($scope) {
     
     var itemData = localStorage['itemList'];
     
+   /* var clickEvent = new MouseEvent("click", {
+        "view": window,
+        "bubbles": true,
+        "cancelable": false
+    }); */
+    
     if(itemData !== undefined) {
         $scope.itemList = JSON.parse(itemData);
     }
+    
+
+    
+
     
     $scope.searchEnter = function() {
         if(event.which == 13 && $scope.newItem!==undefined && $scope.description !==undefined) {
@@ -26,7 +36,6 @@ mainApp.controller('favoritesCtrl', function($scope) {
     
     $scope.addItem = function() {
         $scope.itemList.push({url:$scope.newItem, description: $scope.description});
-        console.log($scope.itemList);
         $scope.newItem = undefined;
         $scope.description = undefined;
         localStorage['itemList'] = JSON.stringify($scope.itemList);
@@ -34,7 +43,13 @@ mainApp.controller('favoritesCtrl', function($scope) {
     
     $scope.toggleEdit = function() {
         
+        $(document).click();
+        
         $scope.editIsVisible = !$scope.editIsVisible;
+        
+        if($scope.editIsVisible == false) {
+            $(document).click();
+        }
 
     };
     
@@ -49,8 +64,6 @@ mainApp.controller('favoritesCtrl', function($scope) {
     
     
     $scope.startEdit = function(item) {
-        
-        console.log("edit start");
         
         $scope.toggleEdit();
         
@@ -73,7 +86,6 @@ mainApp.controller('favoritesCtrl', function($scope) {
         if(event.which == 13 && $scope.editURL !== '' && $scope.editDescription !== '') {
             $scope.toggleEdit();
             $scope.enterSaveChanges(item);
-        
         }
     };
     
