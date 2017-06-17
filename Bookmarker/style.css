@@ -1,0 +1,113 @@
+body {
+    background: #141518;
+    color: lightgrey;
+}
+
+.addInput {
+    display: block;
+    margin: 0 auto;
+    padding: 5px; 
+    color: black;
+    width: 40%;
+}
+
+h2 {
+    text-align: center;
+}
+
+ul {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 10px;
+    position: relative;
+}
+
+li {
+    text-align: center;
+    color: white;
+}
+
+
+.list-group-item {
+    background-color: #5cb85c;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+
+    border-top: 1px solid #141518;
+}
+
+span[contenteditable="true"] {
+    background: #bababa;
+    padding: 3px;
+}
+
+i {
+    cursor:default;
+    color: #141518;
+    float: right;
+}
+
+.glyphicon-plus {
+    padding-left: 5px;
+    color: white;
+}
+
+
+.form-group {
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: darkslategray;
+    font-family: arial;
+    font-weight: bold;
+}
+
+.edit-icon {
+    position: absolute;
+    right: 1%;
+}
+
+.delete-icon {
+    position: absolute;
+    right: 5%;
+}
+
+
+.editInput {
+    font-weight: normal;
+    color: black;
+}
+
+#editForm {
+    text-align: left;
+}
+
+.btn-success {
+    border-radius: 0px;
+    font-weight: bold;
+}
+
+.buttonWrapper {
+    text-align: center;
+}
+
+
+
+a {
+    text-decoration: none;
+    font-family: arial;
+    font-weight: bold;
+    color: white;
+    
+    target-new: tab;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #141518;
+}
+
+a:visited {
+    text-decoration: none;
+}
