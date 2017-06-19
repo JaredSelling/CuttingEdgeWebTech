@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h2><%= name %></h2>
+      
+    <% include templates/header.ejs %>
+    
+    <ul>
+        <% for(var i = 0; i<5; i++) { %>  
+        
+            <li>tuna</li>
+        
+        <% } %>
+    </ul>
+      
+  </body>
+</html>
