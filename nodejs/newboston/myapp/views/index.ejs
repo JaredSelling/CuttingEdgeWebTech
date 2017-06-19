@@ -8,14 +8,16 @@
     <h2><%= name %></h2>
       
     <% include templates/header.ejs %>
+      
+    <h3><%= videodata.categoryName %></h3>
     
     <ul>
-        <% for(var i = 0; i<5; i++) { %>  
-        
-            <li>tuna</li>
-        
-        <% } %>
+        <% videodata.categories.forEach(function(item){ %>
+        <li><a href="https://www.thenewboston.com/videos_food.php?"+<% item.categoryID %>><%= item.categoryName %></a></li>
+        <% }); %>
+
     </ul>
+
       
   </body>
 </html>

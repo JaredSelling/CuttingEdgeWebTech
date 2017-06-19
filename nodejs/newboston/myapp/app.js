@@ -5,8 +5,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var about = require('./routes/about');
 
 var app = express();
+
+app.locals.points = '100';
+app.locals.videodata = require('./videodata.json');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/about', about);
 
 
 // catch 404 and forward to error handler
